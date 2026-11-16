@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fbf7ed">
+  <meta name="description" content="A peaceful digital notebook for writing mantras, one line at a time." data-i18n-content="metaDescription">
+  <title data-i18n="documentTitle">Digital Mantra Lekhan Notebook</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#home" data-view="home" aria-label="Digital Mantra Lekhan home" data-i18n-aria="brandHomeAria">
+      <span class="brand-mark" aria-hidden="true">ॐ</span>
+      <span><strong data-i18n="brand">Mantra Lekhan</strong><small data-i18n="brandNote">A quiet space to write</small></span>
+    </a>
+    <nav class="main-nav" aria-label="Main navigation" data-i18n-aria="mainNavigationAria">
+      <button class="nav-link active" type="button" data-view="home" data-i18n="home">Home</button>
+      <button class="nav-link" type="button" data-action="start" data-i18n="start">Start Mantra Lekhan</button>
+      <button class="nav-link" type="button" data-view="saved" data-i18n="saved">My Saved Pages</button>
+      <button class="nav-link" type="button" data-view="about" data-i18n="about">About</button>
+    </nav>
+    <div class="header-controls">
+      <label class="language-control">
+        <span class="sr-only" data-i18n="language">Language</span>
+        <select id="languageSelect" aria-label="भाषा" data-i18n-aria="language">
+          <option value="hi">हिन्दी</option>
+          <option value="en">English</option>
+          <option value="sa">संस्कृतम्</option>
+          <option value="bn">বাংলা</option>
+          <option value="as">অসমীয়া</option>
+          <option value="gu">ગુજરાતી</option>
+          <option value="mr">मराठी</option>
+          <option value="pa">ਪੰਜਾਬੀ</option>
+          <option value="or">ଓଡ଼ିଆ</option>
+          <option value="ta">தமிழ்</option>
+          <option value="te">తెలుగు</option>
+          <option value="kn">ಕನ್ನಡ</option>
+          <option value="ml">മലയാളം</option>
+          <option value="ur">اردو</option>
+          <option value="ks">कॉशुर</option>
+          <option value="kok">कोंकणी</option>
+          <option value="sd">سنڌي</option>
+          <option value="doi">डोगरी</option>
+          <option value="mai">मैथिली</option>
+          <option value="mni">মৈতৈলোন্</option>
+          <option value="brx">बड़ो</option>
+          <option value="sat">ᱥᱟᱱᱛᱟᱲᱤ</option>
+          <option value="ne">नेपाली</option>
+          <option value="other" data-i18n="otherLanguage">अन्य भारतीय भाषा</option>
+        </select>
+      </label>
+      <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle color theme" data-i18n-aria="themeToggleAria" aria-pressed="false">
+        <span id="themeIcon" aria-hidden="true">☾</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="time-strip" aria-live="off">
+    <span id="currentDate"></span>
+    <span class="time-divider" aria-hidden="true">•</span>
+    <span id="currentDay"></span>
+    <span class="clock" id="currentTime" aria-label="स्थानीय समय"></span>
+  </div>
+
+  <main>
+    <section class="view home-view" id="homeView">
+      <div class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow" data-i18n="welcome">A peaceful practice, at your own pace</p>
+          <h1><span id="heroMantraTitle" data-i18n="heroMantra">डिजिटल मंत्र लेखन</span><span class="hero-subtitle" data-i18n="heroTitle">Write Your Mantra, One Line at a Time</span></h1>
+          <p class="hero-description" data-i18n="heroDescription">Create a little space for devotion. Write mindfully, save your progress, and return whenever you are ready.</p>
+          <button class="primary-button large-button" type="button" data-action="start"><span data-i18n="startWriting">Start Writing</span><span aria-hidden="true"> →</span></button>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="sun-disc">ॐ</div>
+          <span class="art-leaf leaf-one">❧</span>
+          <span class="art-leaf leaf-two">❧</span>
+          <span class="art-dot dot-one"></span><span class="art-dot dot-two"></span><span class="art-dot dot-three"></span>
+        </div>
+      </div>
+      <div class="home-bottom">
+        <div class="welcome-card">
+          <span class="card-icon" aria-hidden="true">✧</span>
+          <div><h2 data-i18n="beginPractice">Begin your practice</h2><p data-i18n="beginDescription">Choose a mantra and fill each of the 30 lines at your own pace.</p></div>
+        </div>
+        <div class="home-language">
+          <label for="homeLanguageSelect" data-i18n="chooseLanguage">अपनी भाषा चुनें</label>
+          <select id="homeLanguageSelect" aria-label="Choose your language" data-i18n-aria="chooseLanguageAria">
+            <!-- Mirrored from the navigation selector by script. -->
+          </select>
+          <small data-i18n="languageNote">Your writing can use any script supported by your device.</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="view writer-view hidden" id="writerView">
+      <div class="page-heading">
+        <div><p class="eyebrow" data-i18n="writingPractice">YOUR WRITING PRACTICE</p><h1 data-i18n="notebookTitle">Mantra Notebook</h1></div>
+      </div>
+      <div class="editor-toolbar">
+        <label class="title-field"><span data-i18n="pageTitleLabel">पृष्ठ का शीर्षक</span><input id="pageTitle" type="text" maxlength="80" placeholder="मेरे मंत्र का अभ्यास" data-i18n-placeholder="pageTitlePlaceholder" autocomplete="off"></label>
+        <label class="mantra-picker"><span data-i18n="chooseMantra">मंत्र चुनें</span>
+          <select id="mantraSelect">
+            <option value="gayatri" data-i18n="mantraGayatri">गायत्री मंत्र</option>
+            <option value="mahamrityunjaya" data-i18n="mantraMahamrityunjaya">महामृत्युंजय मंत्र</option>
+            <option value="shiva" data-i18n="mantraShiva">ॐ नमः शिवाय</option>
+            <option value="harekrishna" data-i18n="mantraHareKrishna">हरे कृष्ण महामंत्र</option>
+            <option value="custom" data-i18n="customMantra">अपना मंत्र लिखें…</option>
+          </select>
+        </label>
+      </div>
+      <div id="customMantraWrap" class="custom-mantra-field hidden">
+        <label for="customMantra" data-i18n="customMantraLabel">आपका मंत्र</label>
+        <textarea id="customMantra" rows="2" maxlength="500" placeholder="यहाँ अपना चुना हुआ मंत्र लिखें" data-i18n-placeholder="customMantraPlaceholder"></textarea>
+        <button class="quiet-button custom-mantra-save" type="button" data-action="save-custom-mantra" data-i18n="saveCustomMantra">मंत्र सहेजें</button>
+      </div>
+      <article class="reference-card">
+        <div class="reference-label"><span class="small-ornament" aria-hidden="true">✧</span><span data-i18n="referenceMantra">REFERENCE MANTRA</span></div>
+        <p id="referenceText" lang="sa" dir="auto"></p>
+      </article>
+      <div class="writing-note"><span aria-hidden="true">☼</span> <span data-i18n="manualMessage">Please write the mantra manually with devotion.</span></div>
+      <div class="writing-progress">
+        <span id="progressText">0 / 30 पंक्तियाँ पूरी</span>
+        <div class="progress-track" role="progressbar" aria-label="लेखन प्रगति" data-i18n-aria="progressAria" aria-valuemin="0" aria-valuemax="30" aria-valuenow="0"><span id="progressFill"></span></div>
+      </div>
+      <div class="notebook-paper" id="writingLines" aria-label="मंत्र लेखन की 30 पंक्तियाँ" data-i18n-aria="writingLinesAria"></div>
+      <div class="editor-actions">
+        <span class="autosave-status" id="saveStatus" aria-live="polite"></span>
+        <div class="action-group">
+          <button class="quiet-button" type="button" data-action="clear" data-i18n="clearPage">Clear Page</button>
+          <button class="primary-button" type="button" data-action="save" data-i18n="savePage">Save Page</button>
+        </div>
+      </div>
+      <p class="storage-notice" data-i18n="storageNotice">Your pages are saved only in this browser. Clearing site data may erase them.</p>
+    </section>
+
+    <section class="view saved-view hidden" id="savedView">
+      <div class="page-heading">
+        <div><p class="eyebrow" data-i18n="yourPractice">YOUR PRACTICE</p><h1 data-i18n="savedHeading">My Saved Pages</h1></div>
+        <button class="primary-button" type="button" data-action="start" data-i18n="newPage">Start a New Page</button>
+      </div>
+      <p class="section-intro" data-i18n="savedIntro">Return to a page, continue writing, or keep a record of your practice.</p>
+      <div id="savedPagesList" class="saved-pages-list"></div>
+      <div id="savedEmpty" class="empty-state hidden"><span aria-hidden="true">❀</span><h2 data-i18n="emptyTitle">A fresh page awaits</h2><p data-i18n="emptyDescription">Your saved pages will appear here. Start writing to begin your collection.</p><button class="primary-button" type="button" data-action="start" data-i18n="startWriting">Start Writing</button></div>
+      <p class="storage-notice" data-i18n="storageNotice">Your pages are saved only in this browser. Clearing site data may erase them.</p>
+    </section>
+
+    <section class="view about-view hidden" id="aboutView">
+      <div class="page-heading"><div><p class="eyebrow" data-i18n="aboutEyebrow">A GENTLE DIGITAL PRACTICE</p><h1 data-i18n="aboutHeading">About this notebook</h1></div></div>
+      <div class="about-card">
+        <p data-i18n="aboutCopy">Digital Mantra Lekhan is a simple, quiet space to write a mantra one line at a time. Every writing page includes one reference mantra and exactly 30 numbered lines.</p>
+        <h2 data-i18n="privacyHeading">Your pages stay on this device</h2>
+        <p data-i18n="privacyCopy">Pages and progress are stored in this browser's local storage; they are not uploaded to a server. Browser-only data may be lost if you clear site data or use a different browser or device.</p>
+        <h2 data-i18n="restrictionsHeading">A gentle reminder</h2>
+        <p data-i18n="restrictionsCopy">Copy, paste, cut, drag-and-drop, and the context menu are restricted inside the writing fields as a deterrent. These browser-level restrictions cannot guarantee that content will not be copied from another tab or through developer tools, browser extensions, or external input methods. They do not block typing, keyboard navigation, or Indian-language input methods.</p>
+        <p class="about-closing" data-i18n="aboutClosing">May your practice bring you a moment of calm.</p>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <footer><span aria-hidden="true">✧</span> <span data-i18n="footer">A quiet space for your daily practice</span> <span aria-hidden="true">✧</span></footer>
+  <script src="script.js"></script>
+</body>
+</html>
